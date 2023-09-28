@@ -1,0 +1,11 @@
+.burger_ingridients{
+  max-height: 912px;
+}
+
+.wrapper{
+  max-height: 716px;
+  overflow: auto;
+  max-width: 600px;
+}
+
+
