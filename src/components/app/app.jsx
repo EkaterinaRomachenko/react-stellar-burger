@@ -1,17 +1,16 @@
 import styles from "./app.module.css";
-import AppHeader from "../app-header/app-header"
-import BurgerIngredients from "../burger-ingredients/burger-ingredients"
-import BurgerConstructor from "../burger-constructor/burger-constructor";
-
+import { data } from "../../utils/data";
+// import { Tab } from '@ya.praktikum/react-developer-burger-ui-components'
 
 function App() {
   return (
     <div className={styles.app}>
-      <AppHeader />
-      <main className={styles.main}>
-        <BurgerIngredients/>
-        <BurgerConstructor />
-      </main>
+      <pre style={{
+      	margin: "auto",
+      	fontSize: "1.5rem"
+      }}>
+      	Измените src/components/app/app.jsx и сохраните для обновления.
+      </pre>
     </div>
   );
 }
