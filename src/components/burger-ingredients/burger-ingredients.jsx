@@ -2,6 +2,8 @@ import styles from './burger-ingredients.module.css'
 import IngredientsList from './burger-ingredients-list/burger-ingredients-list'
 import {Tab} from '@ya.praktikum/react-developer-burger-ui-components'
 import {useRef, useState, useMemo} from "react";
+import { IngredientPropType } from '../../utils/prop-types';
+import PropTypes from "prop-types";
 
 // компонент ингредиент-бургер
 function BurgerIngredients({data}){
@@ -52,6 +54,11 @@ function BurgerIngredients({data}){
       </div>
     </section>
   )
+}
+
+// проверяем на типы
+BurgerIngredients.propTypes ={
+  data: PropTypes.arrayOf(IngredientPropType).isRequired
 }
 
 export default BurgerIngredients;

@@ -21,7 +21,7 @@ function IngredientsItem({data,open}){
 }
 
 IngredientsItem.propTypes ={
-  ingredient: IngredientPropType
+  data: IngredientPropType
 }
 
 export default IngredientsItem

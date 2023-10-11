@@ -12,11 +12,22 @@ function App() {
     data: []
   });
 
+  function  getResponseData (res){
+    if (!res.ok) {
+      return Promise.reject(`Ошибка: ${res.status}`);
+  }
+    return res.json();
+  }
+
+  function getIngredients(){
+    return fetch('https://norma.nomoreparties.space/api/ingredients')
+    .then(getResponseData)
+  }
+
   useEffect(() => {
     const getData = () => {
     setState({ ...state, hasError: false, isLoading: true });
-    fetch('https://norma.nomoreparties.space/api/ingredients')
-      .then(res => res.json())
+    getIngredients()
       .then(data => setState({ ...state, data:data.data, isLoading: false }))
       .catch(e => {
         this.setState({ ...state, hasError: true, isLoading: false });
