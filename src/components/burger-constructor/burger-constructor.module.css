@@ -1,0 +1,21 @@
+.burger_constructor{
+  max-height: 912px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding-top: 100px;
+}
+
+.container{
+  display: flex;
+  gap: 40px;
+  margin-top: 40px;
+  justify-content: flex-end;
+  padding-right: 16px;
+}
+
+.price{
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}

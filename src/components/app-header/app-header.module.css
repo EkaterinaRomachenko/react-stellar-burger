@@ -1,0 +1,52 @@
+.header{
+  display: flex;
+  align-items: center;
+  background-color: #1c1c21;
+  justify-content: center;
+}
+
+
+.container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1280px;
+  width: 100%;
+}
+
+.navigation{
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  gap: 8px;
+  width: 33.3%;
+  justify-content: flex-start;
+}
+
+.link{
+  display: flex;
+  align-items: center;
+  color: #F2F2F3;
+  text-decoration: none;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.link:hover{
+  opacity: 0.6;
+  transition: all 0.5s ease 0s;
+}
+
+.logo{
+  width: 33.3%;
+  display: flex;
+  justify-content: center;
+  object-fit: cover;
+}
+
+.profile{
+  width: 33.3%;
+  display: flex;
+  justify-content: flex-end;
+}
