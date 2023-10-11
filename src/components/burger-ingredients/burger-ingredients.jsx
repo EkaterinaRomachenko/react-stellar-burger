@@ -1,30 +1,28 @@
 import styles from './burger-ingredients.module.css'
 import IngredientsList from './burger-ingredients-list/burger-ingredients-list'
 import {Tab} from '@ya.praktikum/react-developer-burger-ui-components'
-import {data} from '../../utils/data'
-import {useRef, useState} from "react"
-
-
+import {useRef, useState, useMemo} from "react";
 
 // компонент ингредиент-бургер
-function BurgerIngredients(){
-  const [current, setCurrent] = useState('bun');
+function BurgerIngredients({data}){
 
   // фильтруем data на отдельные ингредиенты(булочка,соусы, начинка)
-  const dataSauce = data.filter((data)=> data.type === 'sauce')
-  const dataBun = data.filter((data)=> data.type === 'bun')
-  const dataMain = data.filter((data)=> data.type === 'main')
+  const dataSauce = useMemo(() => data.filter((data)=> data.type === 'sauce'),[data]);
+  const dataBun = useMemo(() => data.filter((data)=> data.type === 'bun'),[data]);
+  const dataMain = useMemo(() => data.filter((data)=> data.type === 'main'),[data]);
+
+  const [current, setCurrent] = useState('bun');
 
   // scroll при нажатии на ингредиет
-  const bunRef = useRef(null);
-  const sauceRef = useRef(null);
-  const mainRef = useRef(null);
+  const categoryRefs = {
+    bun: useRef(null),
+    sauce: useRef(null),
+    main: useRef(null)
+  }
 
   const handleClick = (value)=>{
     setCurrent(value)
-    if(value ==='bun')bunRef.current.scrollIntoView({behavior:'smooth'});
-    if(value === 'sauce')sauceRef.current.scrollIntoView({behavior:'smooth'});
-    if(value === 'main')mainRef.current.scrollIntoView({behavior:'smooth'});
+    categoryRefs[value].current.scrollIntoView({behavior:'smooth'});
   }
 
 
@@ -43,17 +41,17 @@ function BurgerIngredients(){
         </Tab>
       </div>
       <div className={`${styles.wrapper} mt-10 custom-scroll`}>
-        <h3 className={'text text_type_main-medium'} ref={bunRef}>Булки</h3>
-        <IngredientsList  data = {dataBun} nameIngridients= 'Булки'/>
+        <h3 className={'text text_type_main-medium'} ref={categoryRefs.bun}>Булки</h3>
+        <IngredientsList  data = {dataBun} />
 
-        <h3 className={'text text_type_main-medium'} ref={sauceRef}>Соусы</h3>
-        <IngredientsList  data = {dataSauce}/>
+        <h3 className={'text text_type_main-medium'} ref={categoryRefs.sauce}>Соусы</h3>
+        <IngredientsList  data = {dataSauce} />
 
-        <h3 className={'text text_type_main-medium'} ref={mainRef}>Начинки</h3>
-        <IngredientsList  data = {dataMain}/>
+        <h3 className={'text text_type_main-medium'} ref={categoryRefs.main}>Начинки</h3>
+        <IngredientsList  data = {dataMain} />
       </div>
     </section>
   )
 }
 
-export default BurgerIngredients
+export default BurgerIngredients;
